@@ -1,0 +1,36 @@
+{
+ "properties": {
+  "displayName": "Enforce tag on resource",
+  "policyType": "Custom",
+  "mode": "Indexed",
+  "description": "Enforce tag on resource for all newly created resources",
+  "metadata": {
+   "category": "General",
+   "createdBy": "754fbd38-9342-4f42-b5a9-10793052f659",
+   "createdOn": "2020-12-30T11:30:51.4041521Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "field": "[concat('tags[', parameters('tagName'), ']')]",
+    "exists": "false"
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/subscriptions/cd43186f-e8f6-4c77-bd8c-b4f1cae31a8d/providers/Microsoft.Authorization/policyDefinitions/dfdbf610-1a11-4206-80fc-cd6ba43b62a3",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "dfdbf610-1a11-4206-80fc-cd6ba43b62a3"
+}
